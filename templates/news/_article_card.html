@@ -1,0 +1,17 @@
+<div class="article-card">
+    {% if article.featured_image %}
+        <img src="{{ article.featured_image.url }}" alt="{{ article.title }}" class="card-image">
+    {% endif %}
+    <div class="card-body">
+        <h2>
+            <a href="{% url 'news:article_detail' article.slug %}">{{ article.title }}</a>
+        </h2>
+        <p class="card-meta">
+            <strong>Categoría:</strong> 
+            <a href="{% url 'news:category_articles' article.category.slug %}">{{ article.category.name }}</a> | 
+            <strong>Autor:</strong> {{ article.author.name }} | 
+            <strong>Fecha:</strong> {{ article.published_date|date:"d/m/Y H:i" }}
+        </p>
+        <p class="card-summary">{{ article.summary|truncatewords:25 }}</p>
+    </div>
+</div>

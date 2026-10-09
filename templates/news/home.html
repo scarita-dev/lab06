@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Portada - Noticias Tech{% endblock %}
+
+{% block content %}
+    <h2>Últimas Publicaciones</h2>
+    {% for article in articles %}
+        {% include "news/_article_card.html" %}
+    {% empty %}
+        <p>No hay noticias publicadas por el momento.</p>
+    {% endfor %}
+{% endblock %}

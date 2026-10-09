@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+    <article class="article-detail">
+        <h1>{{ article.title }}</h1>
+        <p class="article-meta">
+            <strong>Por:</strong> {{ article.author.name }} | 
+            <strong>Categoría:</strong> 
+            <a href="{% url 'news:category_articles' article.category.slug %}">{{ article.category.name }}</a> | 
+            <em>Publicado el {{ article.published_date|date:"d \d\e F \d\e Y" }}</em>
+        </p>
+        
+        {% if article.featured_image %}
+            <img src="{{ article.featured_image.url }}" alt="{{ article.title }}" class="detail-image">
+        {% endif %}
+
+        <div class="article-content">
+            {{ article.content }}
+        </div>
+    </article>
+    <p><a href="{% url 'news:home' %}">&laquo; Volver a la portada</a></p>
+{% endblock %}

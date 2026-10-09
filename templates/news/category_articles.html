@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Categoría: {{ category.name }}{% endblock %}
+
+{% block content %}
+    <h2>Noticias en la categoría: {{ category.name }}</h2>
+    {% for article in articles %}
+        {% include "news/_article_card.html" %}
+    {% empty %}
+        <p>No se encontraron noticias registradas dentro de esta categoría.</p>
+    {% endfor %}
+    <p><a href="{% url 'news:home' %}">&laquo; Volver a la portada</a></p>
+{% endblock %}
